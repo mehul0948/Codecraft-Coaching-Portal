@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching Institute</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+
+    .navbar {
+      background-color: #0b3c5d;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 span {
+      color: #ff9800;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+
+    .banner {
+      background-color: #164e78;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .banner h1 {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1050px;
+      margin: 25px auto;
+    }
+
+
+    .notice {
+      background-color: #fff3cd;
+      border-left: 5px solid #ff9800;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0 20px 0;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 8px 15px;
+      border: 1px solid #0b3c5d;
+      background: white;
+      color: #0b3c5d;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .filter-btn.active {
+      background: #0b3c5d;
+      color: white;
+    }
+
+    .search-input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 250px;
+    }
+
+
+    .courses-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      width: 48%;
+    }
+
+    .tag {
+      background: #e3f2fd;
+      color: #0b3c5d;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      color: #0b3c5d;
+    }
+
+    .card-bottom {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .form-section {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 25px;
+      margin-top: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-section h2 {
+      color: #0b3c5d;
+      margin-bottom: 15px;
+    }
+
+    .input-box {
+      margin-bottom: 15px;
+    }
+
+    .input-box label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .input-box input,
+    .input-box select {
+      width: 100%;
+      padding: 9px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .fee-box {
+      background: #e9ecef;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .msg-box {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 15px;
+    }
+
+    footer {
+      background: #0b3c5d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <h2>CodeCraft <span>Academy</span></h2>
+    <div>
+      <a href="#courses">Courses</a>
+      <a href="#admission">Admission Form</a>
+    </div>
+  </div>
+
+
+  <div class="banner">
+    <h1>Learn Coding & Crack College Placements</h1>
+    <p>Practical training in Core Java, SQL, JavaScript, and Web Development.</p>
+    <a href="#admission" class="btn">Enroll Now</a>
+  </div>
+
+  <div class="container">
+
+    <div class="notice" id="noticeBox">
+      <span><b>Notice:</b> New Java & Web Dev Placement Batch starting from Monday!</span>
+      <button onclick="hideNotice()" style="border:none; background:none; font-weight:bold; cursor:pointer;">X</button>
+    </div>
+
+
+    <h2 id="courses">Available Courses</h2>
+
+    <div class="top-bar">
+      <div>
+        <button class="filter-btn active" onclick="filterCourses('All', this)">All</button>
+        <button class="filter-btn" onclick="filterCourses('Programming', this)">Programming</button>
+        <button class="filter-btn" onclick="filterCourses('Web', this)">Web Dev</button>
+        <button class="filter-btn" onclick="filterCourses('Database', this)">Database</button>
+      </div>
+      <input type="text" id="searchBox" class="search-input" placeholder="Search course name...">
+    </div>
+
+
+    <div class="courses-grid" id="courseContainer"></div>
+
+
+    <div class="form-section" id="admission">
+      <h2>Student Admission Form</h2>
+
+      <form id="admissionForm">
+        <div class="input-box">
+          <label>Student Name</label>
+          <input type="text" id="studentName" required placeholder="Enter your full name">
+        </div>
+
+        <div class="input-box">
+          <label>Mobile Number</label>
+          <input type="tel" id="studentPhone" required placeholder="Enter 10-digit number">
+        </div>
+
+        <div class="input-box">
+          <label>Select Course</label>
+          <select id="courseDropdown" onchange="showFee()"></select>
+        </div>
+
+        <div class="fee-box">
+          <span id="courseDuration">Duration: 2 Months</span>
+          <span id="courseFee">Fee: ₹2,500</span>
+        </div>
+
+        <button type="submit" class="btn" style="width:100%; margin-top:0;">Submit Form</button>
+      </form>
+
+      <div class="msg-box" id="confirmMsg"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 CodeCraft Academy | Designed by Mehul Kumar</p>
+  </footer>
+
+  <script>
+
+    const courses = [
+      { id: 1, name: "Core Java & OOPS", category: "Programming", duration: "2 Months", fee: "₹2,500", info: "Java basics, Collections, and MySQL JDBC connectivity." },
+      { id: 2, name: "Frontend Web Development", category: "Web", duration: "2.5 Months", fee: "₹3,000", info: "HTML, CSS, JavaScript ES6, and React fundamentals." },
+      { id: 3, name: "SQL & MySQL Database", category: "Database", duration: "1 Month", fee: "₹1,500", info: "Database tables, joins, queries, and backend connection." },
+      { id: 4, name: "Data Structures in Java", category: "Programming", duration: "3 Months", fee: "₹3,500", info: "Arrays, Strings, LinkedList, and placement coding questions." }
+    ];
+
+    const container = document.getElementById("courseContainer");
+    const dropdown = document.getElementById("courseDropdown");
+    const searchBox = document.getElementById("searchBox");
+
+
+    function displayCourses(dataList) {
+      if (dataList.length === 0) {
+        container.innerHTML = "<p>No course found.</p>";
+        return;
+      }
+
+      container.innerHTML = dataList.map((item) => `
+        <div class="card">
+          <span class="tag">${item.category} | ${item.duration}</span>
+          <h3>${item.name}</h3>
+          <p>${item.info}</p>
+          <div class="card-bottom">
+            <b>${item.fee}</b>
+            <button class="btn" style="margin-top:0; padding:6px 14px;" onclick="enrollCourse(${item.id})">Enroll Now</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+
+    function fillDropdown() {
+      dropdown.innerHTML = courses.map((item) => `
+        <option value="${item.id}">${item.name}</option>
+      `).join("");
+    }
+
+
+    function filterCourses(category, btn) {
+      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      if (category === "All") {
+        displayCourses(courses);
+      } else {
+        const result = courses.filter((item) => item.category === category);
+        displayCourses(result);
+      }
+    }
+
+
+    searchBox.addEventListener("input", () => {
+      const text = searchBox.value.toLowerCase();
+      const result = courses.filter((item) => item.name.toLowerCase().includes(text));
+      displayCourses(result);
+    });
+
+
+    function enrollCourse(id) {
+      dropdown.value = id;
+      showFee();
+      document.getElementById("admission").scrollIntoView({ behavior: "smooth" });
+    }
+
+
+    function showFee() {
+      const selectedId = Number(dropdown.value);
+      const found = courses.find((item) => item.id === selectedId);
+      document.getElementById("courseDuration").innerText = "Duration: " + found.duration;
+      document.getElementById("courseFee").innerText = "Fee: " + found.fee;
+    }
+
+
+    function hideNotice() {
+      document.getElementById("noticeBox").style.display = "none";
+    }
+
+
+    document.getElementById("admissionForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("studentName").value;
+      const phone = document.getElementById("studentPhone").value;
+      const selectedCourse = courses.find((item) => item.id === Number(dropdown.value));
+
+      const msgBox = document.getElementById("confirmMsg");
+      msgBox.style.display = "block";
+      msgBox.innerHTML = `Thank you <b>${name}</b> (${phone})! You are registered for <b>${selectedCourse.name}</b>.`;
+
+      document.getElementById("admissionForm").reset();
+      showFee();
+    });
+
+
+    displayCourses(courses);
+    fillDropdown();
+    showFee();
+  </script>
+
+</body>
+
+</html>
